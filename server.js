@@ -12,20 +12,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Initialize SQLite database
 const db = new sqlite3.Database('./tasks.db', (err) => {
     if (err) {
-        console.error('Failed to connect to the database:', err);
+        console.error('Failed to connect to the database:', err.message);
     } else {
         console.log('Connected to the SQLite database.');
     }
 });
 
 // Create table if it doesn't exist
-db.run(`CREATE TABLE IF NOT EXISTS tasks (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL,
-    description TEXT,
-    status TEXT NOT NULL DEFAULT 'pending',
-    due_date TEXT
-)`);
+db.serialize(() => {
+    db.run(`CREATE TABLE IF NOT EXISTS tasks (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT NOT NULL,
+        description TEXT,
+        status TEXT NOT NULL DEFAULT 'pending',
+        due_date TEXT
+    )`, (err) => {
+        if (err) {
+            console.error('Failed to create tasks table:', err.message);
+        } else {
+            console.log('Tasks table is ready.');
+        }
+    });
+});
 
 // API routes
 app.get('/api/tasks', (req, res) => {
