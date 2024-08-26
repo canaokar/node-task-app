@@ -1,44 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Metadata and Page Title -->
+    <meta charset="UTF-8"> <!-- Defines the character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper rendering and touch zooming on mobile devices -->
+    <title>Task Manager</title> <!-- The title of the web page that appears in the browser tab -->
+
+    <!-- Link to External Stylesheet -->
+    <link rel="stylesheet" href="styles.css"> <!-- Links to the external CSS file for styling the page -->
 </head>
 <body>
+    <!-- Main Container for the Task Manager Application -->
     <div class="container">
-        <h1>Task Manager</h1>
+        <h1>Task Manager</h1> <!-- Main heading of the page -->
 
+        <!-- Task Form for Creating and Editing Tasks -->
         <form id="task-form">
-            <input type="hidden" id="task-id">
+            <!-- Hidden Input to Store Task ID for Editing -->
+            <input type="hidden" id="task-id"> <!-- This hidden input stores the ID of the task being edited -->
+
+            <!-- Input Field for Task Title -->
             <div>
-                <label for="title">Title:</label>
-                <input type="text" id="title" required>
+                <label for="title">Title:</label> <!-- Label for the title input field -->
+                <input type="text" id="title" required> <!-- Input field for the task title, marked as required -->
             </div>
+
+            <!-- Textarea for Task Description -->
             <div>
-                <label for="description">Description:</label>
-                <textarea id="description"></textarea>
+                <label for="description">Description:</label> <!-- Label for the description textarea -->
+                <textarea id="description"></textarea> <!-- Textarea for entering the task description -->
             </div>
+
+            <!-- Dropdown for Task Status -->
             <div>
-                <label for="status">Status:</label>
-                <select id="status">
-                    <option value="pending">Pending</option>
-                    <option value="in progress">In Progress</option>
-                    <option value="completed">Completed</option>
+                <label for="status">Status:</label> <!-- Label for the status dropdown -->
+                <select id="status"> <!-- Dropdown menu for selecting the task status -->
+                    <option value="pending">Pending</option> <!-- Option for pending status -->
+                    <option value="in progress">In Progress</option> <!-- Option for in progress status -->
+                    <option value="completed">Completed</option> <!-- Option for completed status -->
                 </select>
             </div>
+
+            <!-- Input Field for Due Date -->
             <div>
-                <label for="due-date">Due Date:</label>
-                <input type="date" id="due-date">
+                <label for="due-date">Due Date:</label> <!-- Label for the due date input field -->
+                <input type="date" id="due-date"> <!-- Input field for selecting the task's due date -->
             </div>
-            <button type="submit">Save Task</button>
+
+            <!-- Submit Button for the Task Form -->
+            <button type="submit">Save Task</button> <!-- Button to submit the form, which saves or updates the task -->
         </form>
 
-        <h2>Task List</h2>
-        <ul id="task-list"></ul>
+        <!-- Section to Display the List of Tasks -->
+        <h2>Task List</h2> <!-- Heading for the task list section -->
+        <ul id="task-list"></ul> <!-- Unordered list where tasks will be dynamically displayed -->
     </div>
 
-    <script src="scripts.js"></script>
+    <!-- Link to External JavaScript File -->
+    <script src="scripts.js"></script> <!-- Links to the external JavaScript file that handles task interactions -->
 </body>
 </html>
